@@ -1,4 +1,4 @@
-
+// proof of concept script
 const myPost = {
     dateFrom:'2021-09-01',
     dateTo:'2021-10-01',
@@ -10,13 +10,9 @@ const myPost = {
 
 const paramsEncoded = encodeURIComponent(JSON.stringify(myPost))
 
-console.log(paramsEncoded);
+console.log(`${paramsEncoded}\n`);
 
-console.log('#########')
-console.log('#########')
-console.log('#########')
-console.log('#########')
-console.log('#########')
+console.log('\n')
 
 const paramsDecoded = decodeURIComponent(paramsEncoded);
 console.log(JSON.parse(paramsDecoded)['countries']);
