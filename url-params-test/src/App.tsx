@@ -30,10 +30,16 @@ const BusinessLogic = () => {
   const history = useHistory();
 
   React.useEffect(()=>{
-    const unparsed = intialURLParams.get('query')
-    if(!unparsed) return 
-    const parsedToString = decodeURIComponent(unparsed);
-    setSearchParams(JSON.parse(parsedToString));
+    try{
+      const unparsed = intialURLParams.get('query')
+      if(!unparsed) return 
+      const parsedToString = decodeURIComponent(unparsed);
+      setSearchParams(JSON.parse(parsedToString));
+    }catch(e){
+      alert(`Error: ${e}`);
+      console.error(e);
+      return;
+    }
   },[intialURLParams])
 
   const updateToBeSearched = (updateType:ParamKey,updateValue:any):void => {
@@ -63,9 +69,9 @@ const BusinessLogic = () => {
           <input type='string' placeholder='date from' onChange={(e)=>updateToBeSearched('dateFrom',e.currentTarget.value)}/>
           <input type='string' placeholder='date to' onChange={(e)=>updateToBeSearched('dateTo',e.currentTarget.value)}/>
           <select onChange={(e)=>updateToBeSearched('countries',e.currentTarget.value)}>
-            <option>JP</option>
-            <option>CN</option>
-            <option>HK</option>
+            <option>Brasil</option>
+            <option>Uraguay</option>
+            <option>Jamaica</option>
           </select>
           <button onClick={handleSubmit}>Sub</button>
         </form>
